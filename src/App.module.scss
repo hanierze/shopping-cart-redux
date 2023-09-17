@@ -1,0 +1,15 @@
+.appWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .content {
+    flex: 1;
+  }
+
+  .containerRoutes{
+    margin-top: 60px !important;
+    @apply sm:m-0 w-full ;
+  }
+  

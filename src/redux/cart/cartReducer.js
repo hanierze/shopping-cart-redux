@@ -12,7 +12,8 @@ const initialCartState = {
     }, 0);
     const total = items
       .reduce((total, product) => {
-        return total + product.price * product.quantity;
+
+        return total + product.attributes.price * product.quantity;
       }, 0)
       .toFixed(2);
   

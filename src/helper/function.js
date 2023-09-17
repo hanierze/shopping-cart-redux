@@ -1,6 +1,6 @@
 const shorten = (text) => {
-    const arr = text.split(" ");
-    return `${arr[0]} ${arr[1]}`;
+    const arr = text?.split(" ");
+    return arr.length>1 ? `${arr[0]} ${arr[1]}` : arr;
 };
 
 const isInCart = (state, id) => {

@@ -1,31 +1,35 @@
 import React from "react";
-import { useSelector , useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 //style
-import styles from "./Product.module.css";
+import styles from "./Product.module.scss";
 
 //icon
-import trash from "../../assets/icons/trash.svg";
+import { faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { Link } from "react-router-dom";
 import { isInCart, quantityCount, shorten } from "../../helper/function";
 
-import {increase , decrease,removeItem,addItem} from '../../redux/cart/cartAction'
-
-
+import {
+  increase,
+  decrease,
+  removeItem,
+  addItem,
+} from "../../redux/cart/cartAction";
 
 
 const Product = ({ product }) => {
-
   const dispatch = useDispatch();
-  const state  = useSelector(state => state.cartState)
+  const cartstate = useSelector((state) => state.cartState);
 
-
-  const { title, price, image, id } = product;
+  const { title, price, images } = product.attributes;
+  const image = `${process.env.REACT_APP_BASE_URL}${images.data[0].attributes.url}`
+  const {  id } = product;
   return (
     <div className={styles.container}>
       <img className={styles.image} src={image} alt="products" />
-      <div>
+      <div className="mt-2">
         <div>
           <p className={styles.title}> {shorten(title)} </p>
           <p> ${price} </p>
@@ -33,17 +37,15 @@ const Product = ({ product }) => {
         <div className={styles.linkContainer}>
           <Link to={`/products/${id}`}> detail </Link>
           <div className={styles.buttonsContainer}>
-            {quantityCount(state, id) === 1 && (
+            {quantityCount(cartstate, id) === 1 && (
               <button
                 className={styles.smallButton}
-                onClick={() =>
-                  dispatch(removeItem( product) )
-                }
+                onClick={() => dispatch(removeItem(product))}
               >
-                <img src={trash} alt="trash" />
+                <FontAwesomeIcon icon={faTrashAlt} size="xs" />
               </button>
             )}
-            {quantityCount(state, id) > 1 && (
+            {quantityCount(cartstate, id) > 1 && (
               <button
                 className={styles.smallButton}
                 onClick={() => dispatch(decrease(product))}
@@ -51,10 +53,10 @@ const Product = ({ product }) => {
                 -
               </button>
             )}
-            {quantityCount(state, id) > 0 && (
-              <span className={styles.counter}>{quantityCount(state, id)}</span>
+            {quantityCount(cartstate, id) > 0 && (
+              <span className={styles.counter}>{quantityCount(cartstate, id)}</span>
             )}
-            {isInCart(state, id) ? (
+            {isInCart(cartstate, id) ? (
               <button
                 className={styles.smallButton}
                 onClick={() => dispatch(increase(product))}
@@ -62,9 +64,7 @@ const Product = ({ product }) => {
                 +
               </button>
             ) : (
-              <button
-                onClick={() => dispatch(addItem(product))}
-              >
+              <button onClick={() => dispatch(addItem(product))}>
                 add to cart
               </button>
             )}

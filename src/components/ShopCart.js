@@ -2,52 +2,60 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Cart from "./shared/Cart";
 
-import { useSelector , useDispatch } from "react-redux";
-import {clear , checkout} from '../redux/cart/cartAction'
-
+import { useSelector, useDispatch } from "react-redux";
+import { clear, checkout } from "../redux/cart/cartAction";
 
 //styles
-import styles from "./ShopCart.module.css";
+import styles from "./ShopCart.module.scss";
+import { userData } from "../helper/storage";
+import Payment from "./payment/payment";
+
+//Toast
+import { notify } from "../components/toast";
+import ConfirmationModal from "./confirmation-modal/ConfirmationModal";
 
 const ShopCart = () => {
   const dispatch = useDispatch();
-  const state  = useSelector(state => state.cartState)
+  const state = useSelector((state) => state.cartState);
 
+  const payment = () => {
+    const { jwt } = userData();
+    jwt ? dispatch(checkout()) : notify("Please login first", "error");
+  };
 
   return (
     <div className={styles.container}>
-      <div className={styles.cart}>
-        {state.selectedItems.map((item) => (
-          <Cart product={item} key={item.id} />
-        ))}
-      </div>
+      {state.itemCounter !== 0 && (
+        <div className={styles.cart}>
+          {state.selectedItems.map((item) => (
+            <Cart product={item} key={item.id} />
+          ))}
+        </div>
+      )}
       {state.itemCounter > 0 && (
         <div className={styles.total}>
-          <p>total items : {state.itemCounter}</p>
-          <p>total payments : ${state.total}</p>
+          <div>
+            <p>total items : {state.itemCounter}</p>
+            <p>total payments : ${state.total}</p>
+          </div>
           <div className={styles.buttons}>
-            <button
-              className={styles.checkout}
-              onClick={() => dispatch(dispatch(clear()))}
-            >
+            <button className={styles.checkout} onClick={payment}>
               Check out
             </button>
-            <button
-              className={styles.clear}
-              onClick={() => dispatch(checkout())}
-            >
-              Clear
-            </button>
+
+            <div className={styles.clear}>
+              <ConfirmationModal
+                question="Are you sure to delete?"
+                title="Clear"
+                func={() => dispatch(clear())}
+              />
+            </div>
+
           </div>
         </div>
       )}
 
-      {state.checkout && (
-        <div className={styles.complete}>
-          <h3>checked out successfully</h3>
-          <Link to="/products">buy more ...</Link>
-        </div>
-      )}
+      {state.checkout && <Payment />}
 
       {!state.checkout && state.itemCounter === 0 && (
         <div className={styles.complete}>

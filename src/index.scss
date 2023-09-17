@@ -1,0 +1,33 @@
+@use 'assets/styles/variables' as global;
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body,#root{
+  height: 100%;
+  width: 100%;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background-image: linear-gradient(
+    to bottom right,
+    #faf0fc,
+    #ffff,
+    #ffff,
+
+  );
+}
+
+
+
+
+
+
+

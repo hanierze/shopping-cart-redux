@@ -1,0 +1,43 @@
+.mainContainer {
+  @apply flex flex-col md:flex-row justify-start md:justify-around h-full items-center md:items-stretch ;
+  background: aliceblue;
+  direction: rtl;
+}
+
+.userBox {
+  background: #d9edff;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+@apply flex justify-center pb-[70px] w-[330px] sm:w-[440px] ;
+
+  img {
+    width: 410px;
+    height: fit-content;
+    display: block;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+
+    @apply w-[310px] sm:w-[410px];
+  }
+}
+.textContainer {
+direction: ltr;
+  @apply  p-5 flex justify-center flex-col w-full lg:w-1/2 md:w-1/3;
+
+  h1 {
+    font-size: 22px;
+    font-weight: 800;
+  }
+  p {
+    font-size: 18px;
+
+    text-align: justify;
+    @apply py-3;
+  }
+
+  button {
+    @apply text-lg bg-green-700 border-none text-white h-10 w-44 rounded-md cursor-pointer transition duration-200 shadow-md ;
+  }
+}
+
+

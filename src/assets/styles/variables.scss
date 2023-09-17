@@ -1,0 +1,79 @@
+// Global Variables and Theming.
+
+:root {
+  --color-light: #f9fafb; //bg-zamine and bread crumb and input search header
+  --color-light-50: #e2e8f0; //form border and input border
+  --color-light-100: #e5e7eb; //bg hover change year button
+  --color-light-200: #fbfbfb; //app background
+  --color-light-300: #e0e0e0;
+  --color-light-400: #a8a29e; // icon date picker
+
+  --color-light-tint: #ffffff;
+
+  --color-medium: #3d4451; // text admin and khode taghvim date picker
+  --color-medium-50: #d6d3d1;
+  --color-medium-100: #a8a29e;
+  --color-medium-200: #969ba0;
+  --color-medium-300: #292524; // text admin and khode taghvim date picker
+
+  --color-primary: #ec4899;
+  --color-primary-50: #fdf2f8;
+  --color-primary-100: #fce7f3;
+  --color-primary-200: #fbcfe8;
+  --color-primary-300: #f9a8d4;
+  --color-primary-400: #f472b6;
+  --color-primary-500: #ec4899;
+  --color-primary-600: #db2777;
+  --color-primary-700: #be185d;
+  --color-primary-800: #9d174d;
+  --color-primary-900: #831843;
+  --color-primary-950: #500724;
+
+  //--color-salt: #94a3b8;
+  //--color-salt: #64CFD9;
+  //--color-salt: #86E7F0;
+  //--color-salt: #dee2e6;
+  --color-salt: #d4d4d8;
+  --color-salt-100: #efefee;
+  --color-salt-200: #c6c4c4cc;
+
+  --color-secondary: #c084fc;
+  --color-secondary-50: #bfdbfe;
+  --color-secondary-100: #7464d9;
+
+  --color-success: #32b088;
+  --color-success-shade: #29c467;
+  --color-success-contrast: #e5f8f0;
+  --color-success-tint: #44e283;
+
+  --color-warning: #d1953a;
+  --color-warning-shade: #e0bb2e;
+  --color-warning-contrast: #fff3e5;
+  --color-warning-tint: #ffd948;
+
+  --color-danger: #fd6566;
+  --color-danger-rgb: 255, 73, 97;
+  --color-danger-contrast: #ffe9e8;
+  --color-danger-contrast-rgb: 255, 255, 255;
+  --color-danger-shade: #e04055;
+  --color-danger-tint: #ff5b71;
+
+  --color-dark: #222428;
+  --color-dark-shade: #1e2023;
+  --color-dark-tint: #383a3e;
+
+  --color-accent-500: #df89da;
+
+  .theme-dark {
+    --color-secondary: #939393;
+    --color-secondary-50: #0e0803ff;
+    --color-secondary-200: #ffffff;
+
+    --color-primary: #ffc107;
+
+    --color-tertiary: #2b2623ff;
+  }
+}
+
+$z-index-sidebar: 99;
+$z-index-modal: 100;

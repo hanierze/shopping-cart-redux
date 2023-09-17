@@ -1,0 +1,30 @@
+
+
+.buttons{
+    @apply flex justify-evenly py-3;
+    button{
+        padding:5px 10px;
+        width: calc(40%);
+        
+    }
+
+    > :first-child{
+        @apply border border-green-500 text-green-500 rounded;
+     
+    }
+
+    > :last-child{
+        @apply border border-red-500 text-red-500 rounded;
+     
+    }
+}
+
+h1{
+    @apply font-bold text-[18px];
+}
+
+.container img {
+    width:18px;
+}
+
+

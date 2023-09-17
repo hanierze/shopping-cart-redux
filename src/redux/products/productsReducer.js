@@ -1,6 +1,7 @@
 const initialState = {
   loading: false,
   products: [],
+  product: {},
   error: "",
 };
 
@@ -23,6 +24,19 @@ const productReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+
+      case "FETCH_PRODUCT_REQUEST":
+        return {
+          ...state,
+          loading: true,
+        };
+      case "FETCH_PRODUCT_SUCCESS":
+        return {
+          ...state,
+          loading: false,
+          product: action.payload,
+        };
+
       default: return state
   }
 };
